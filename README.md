@@ -24,7 +24,7 @@ No duden en escribirme si tienen alguna duda o problema de instalación. Es impo
 
 ### **Contacto:**
 
-[Biol. Exp. Jhonatan Raúl Martínez Valderrama](cv_J_Raul_Mtz_Valderrama.pdf): jhonatanraulm@gmail.com
+Biol. Exp. [Jhonatan Raúl Martínez Valderrama](cv_J_Raul_Mtz_Valderrama.pdf); jhonatanraulm@gmail.com ;
 
 + Posgrado en Ciencias Biológicas, Universidad Nacional Autónoma de México. 
 + Unidad de Investigación en Virología y Cáncer, Hospital Infantil de México, Federico Gómez. 
