@@ -1,0 +1,5 @@
+[2024-06-12 13:37:38,229] multiqc.core.file_search                           [INFO   ]  Search path: /home/jrmarval/marval/Bioinfo_Inmunologia2023/conda/test
+[2024-06-12 13:37:38,389] multiqc.modules.fastqc.fastqc                      [INFO   ]  Found 2 reports
+[2024-06-12 13:37:38,723] multiqc.core.write_results                         [INFO   ]  Data        : multiqc_data
+[2024-06-12 13:37:39,060] multiqc.core.write_results                         [INFO   ]  Report      : multiqc_report.html
+[2024-06-12 13:37:39,064] multiqc.multiqc                                    [INFO   ]  MultiQC complete
