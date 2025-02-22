@@ -35,7 +35,7 @@ Una de las características de Linux es el uso de la terminal. Aunque el SO  tie
 
 En este curso aprenderemos a usar la terminal para navegar en el sistema, manipular archivos y correr herramientas bioinformáticas
 
-![¿Linux es importante?](k_linux.png "¿Linux es importante?")
+![¿Linux es importante?](bioinfo_linux.png "¿Linux es importante?")
 
 Linux es una herramienta poderosa en el mundo de la bioinformática. Aprender a manejar la terminal no solo nos permitirá ejecutar análisis de datos con mayor eficiencia, sino que también nos preparará para trabajar en servidores y clústeres de alto rendimiento.
 
