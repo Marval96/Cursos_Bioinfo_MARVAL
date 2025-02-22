@@ -37,7 +37,7 @@ En este curso aprenderemos a usar la terminal para navegar en el sistema, manipu
 
 ![¿Linux es importante?](k_linux.png "¿Linux es importante?")
 
-    Linux es una herramienta poderosa en el mundo de la bioinformática. Aprender a manejar la terminal no solo nos permitirá ejecutar análisis de datos con mayor eficiencia, sino que también nos preparará para trabajar en servidores y clústeres de alto rendimiento.
+Linux es una herramienta poderosa en el mundo de la bioinformática. Aprender a manejar la terminal no solo nos permitirá ejecutar análisis de datos con mayor eficiencia, sino que también nos preparará para trabajar en servidores y clústeres de alto rendimiento.
 
 ----
 
