@@ -2,9 +2,10 @@
 
 **¡ Bienvenidos :) !**
 
-En este repositorio encontrarán el material de apoyo para las sesiones. Durante este curso trabajaremos con el sistema operativo Linux, en específico con la distribución Ubuntu mediante el programa [*Windows Subsystem Linux (WSL)*](https://learn.microsoft.com/es-es/windows/wsl/about).
+En este repositorio encontrarán el material de apoyo para las sesiones. Durante este curso trabajaremos con el sistema operativo Linux, en específico con la distribución Ubuntu mediante el programa [*Windows Subsystem Linux (WSL)*](https://learn.microsoft.com/es-es/windows/wsl/about). 
 
 **¡Por favor, es muy importante que tengan instalado el programa para el primer día del curso! El tiempo es corto así que tratemos de aprovecharlo.**
+**También, les pido que contesten el siguiente [formulario:](https://forms.gle/ufytsbYJrMf8M1nY6), por favor.**
 
 ### **Instalación de WSL (*Windows Subsystem for Linux*):**
 
