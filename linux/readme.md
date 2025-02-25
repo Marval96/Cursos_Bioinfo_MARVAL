@@ -10,9 +10,9 @@ Linux es un *Kernel*, es decir, es el "núcleo" de un sistema operativo (SO) y e
 
 Si bien estrictamente el verdadero sistema operativo es GNU/Linux, se entiende que **Linux** es un sistema operativo. La acotación importante deberá ser ¿de cuál distribución de Linux estamos hablando? Linux existe en distintas versiones diseñadas para fines diferentes y por ende su funcionamiento puede variar entre distribuciones pese a tener una base común. Este punto común es el sistema operativo UNIX de AT&T, el mismo de Mac OS. Por ende, mucho de lo que se hace en Linux se puede hacer con Mac, lo complejo viene cuando quremos trabajar con Windows. :( 
 
-Si bien Windows es el SO más popular en el mundo, especialmente en equipos personales de compúto, la realidad es que nivel industria Linux tiene mayor presencia en el mercado. **La mayoría de los servidores en el mundo usan Linux, como los de Google, Amazon, Facebook, NASA e incluso Netflix**. 
+Si bien Windows es el SO más popular en el mundo, especialmente en equipos personales de compúto, la realidad es que nivel industria Linux tiene mayor presencia en el mercado. **La mayoría de los servidores en el mundo usan Linux, como lo son los servidores de: Google, Amazon, Facebook, NASA e incluso Netflix**. 
 
-Para nosotros resulta importante conocer y manejar aunque sea de una forma básica este sistema... si en algún momento trabajamos con datos de secuenciación masiva, simulación de sistemas complejos, modelado 3D o cualquier tarea que requeira grandes recursos computacionales nuestra computadora personal seguramente no podrá con las tareas. En este escenario necesitaremos conectarnos a un *cluster* o a una *workstation* y los más seguro es que su SO sea Linux. Además, muchas de las herramientas computacionales empleadas en las ciencias omicas están implementadas en Linux. 
+Para nosotros resulta importante conocer y manejar aunque sea de una forma básica este sistema... si en algún momento trabajamos con datos de secuenciación masiva, simulación de sistemas complejos, modelado 3D o cualquier tarea que requiera grandes recursos computacionales nuestra computadora personal seguramente no podrá con las tareas. En este escenario necesitaremos conectarnos a un *cluster* o a una *workstation* y los más seguro es que su SO sea Linux. Además, muchas de las herramientas computacionales empleadas en las ciencias omicas están implementadas en Linux. 
 
 En resumen, Linux es un sistema operativo basado en Unix que es ampliamente utilizado en bioinformática por su estabilidad, eficiencia y compatibilidad con herramientas científicas de código abierto. Sus ventajas incluyen:
 
@@ -33,32 +33,52 @@ Una de las características de Linux es el uso de la terminal. Aunque el SO  tie
 + Permite automatizar tareas con scripts.
 + Optimiza el uso de recursos computacionales.
 
-En este curso aprenderemos a usar la terminal para navegar en el sistema, manipular archivos y correr herramientas bioinformáticas
+En este curso aprenderemos a usar la terminal para navegar en el sistema, manipular archivos y correr herramientas bioinformáticas.
 
 ![¿Linux es importante?](bioinfo_linux.png "¿Linux es importante?")
 
-Linux es una herramienta poderosa en el mundo de la bioinformática. Aprender a manejar la terminal no solo nos permitirá ejecutar análisis de datos con mayor eficiencia, sino que también nos preparará para trabajar en servidores y clústeres de alto rendimiento.
+**Linux es una herramienta poderosa en el mundo de la bioinformática. Aprender a manejar la terminal no solo nos permitirá ejecutar análisis de datos con mayor eficiencia, sino que también nos preparará para trabajar en servidores y clústeres de alto rendimiento.**
+
+En 2024 Linux registró su máximo histórico en usuarios del sistema operativo alcanzando un 4% total de los usarios de PC a nivel mundial. Si bien, este procentaje parece poco, los equipos con este SO son de gran valor en el mercado al igaul que sus usuarios.  La comunidad de Linux es grande, por ello, hay distintos fuentes de las cuales podemos obtener inforación sobre el uso del sistema y sobre todo para resolver errores al momento de programar. Algunas herraminetas para consultar información sobre el sistema y sus elementos son:
+
++ El manual específico de cada comando.
++ La documentación de los paquetes.
++ Foros de debáte: [Stackoverflow](https://stackoverflow.com/questions), [Biostars](https://www.biostars.org/), etc.
++ Inteligencias Articiales: [Chat GPT](https://openai.com/index/chatgpt/), [Gemini](https://gemini.google.com/), [Deep Seek](https://www.deepseek.com/), etc.
 
 ----
 
 ### **Trabajando en la terminal:**
 
+La terminal es una interfaz de línea de comandos (CLI) que permite interactuar con el sistema operativo escribiendo instrucciones en texto. A diferencia de las interfaces gráficas, la terminal es más eficiente para:
+
++ Procesar archivos grandes.
++ Automatizar tareas con scripts.
++ Conectar con servidores remotos. 
+
 Nota: las salidas que verán son un ejemplo, corresponden a mi equipo y por ende tú tendrás una distinta en comandos que dependen del contexto de la computadora. En esta guía los camandos a ejecutar los verás en una especie de caja, podrás copiarlos y pegarlos directamente en tu computadora. Además, la salida se representa después del signo ">" a manera de ejemplo. Tú verás la salida en tu terminal. 
 
-Lo que nos importa es que cuando se enfrenten a un sistema Linux se sientan confiados. Para ello veremos como movernos en la terminal, generar archivos, ejecutar script's y algunos otros tips que les podamos brindar. 
+El objetivo es se sientan confiados al enfrentarse a un equipo con Linux como sistema operativo. Para ello veremos como movernos en la terminal, generar archivos, ejecutar script's y algunos otros tips que les puedan resultar útiles. 
 
-**Lo primero que deben saber es lo siguiente: a terminal funciona a través de comandos. La estructura básica de un comando es la siguiente:** 
+**Lo primero que deben saber es lo siguiente: la terminal funciona a través de comandos. Los comandos son instrucciones que el usuario introduce en la terminal para realizar acciones. La estructura básica de un comando es la siguiente:** 
 
     comando [opciones] [argumentos]
+---
+    ls -lh /home/
+---    
+    > total 4.0K
+    drwxr-x--- 17 jrmarval jrmarval 4.0K Feb 24 16:36 jrmarval
 
 
-Cuando abrimos la terminal entramos a un directorio pero no sabemos a cuál. Entonces, para saber en que directorio nos situamos podemos ejecutar el comando *pwd* el cual **va imprimir el directorio actual de trabajo:**
+En esta estructura el comando es la acción a realizar, las opciones modifican el comportamiento del comando y los argumentos representan los elemntos sobre los que actuará ese comando.
+
+Ahora, cuando abrimos la terminal entramos a un directorio (directorio=carpeta) pero no sabemos a cuál. Entonces, para saber en que directorio nos situamos podemos ejecutar el comando *pwd* el cual **va imprimir el directorio actual de trabajo:**
     
     pwd
 ---
     > /home/jrmarval 
 
-Esto también es útil para especificar rutas en nuestros comandos o script´s.
+**Tip:** esto también es útil para especificar rutas en nuestros comandos o script´s.
 
 Para tener un orden en nuestra computadora y en este curso, vamos a crear una carpeta para almacenar todos los archivos que vayamos generando. Para hacer esto usaremos el comando *mkdir*:
 
@@ -71,36 +91,48 @@ Cuando corran este comando no verán alguna salida pero el directorio ya fue gen
     > [Elementos presentes en el directorio]
 
     ls -lh
-    > total 12K
-    drwxr-xr-x 9 jrmarval jrmarval 4.0K Nov  9 15:19 RNAseq_uivc
+    total 68K
 
-    drwxr-xr-x 4 jrmarval jrmarval 4.0K Dec  2 02:49 bioinf_inm_encb_ipn
-
-    drwxr-xr-x 2 jrmarval jrmarval 4.0K Dec  2 02:49 curso_bioinfo_inm_encb
-
-    -rw-r--r-- 1 jrmarval jrmarval   16 Dec  2 03:00 test.txt
+    drwxr-xr-x 7 jrmarval jrmarval 4.0K Jun 11  2024 Bioinfo_Inmunologia2023
+    drwxr-xr-x 5 jrmarval jrmarval 4.0K Feb 22 11:36 Cursos_Bioinfo_MARVAL
+    drwxr-xr-x 9 jrmarval jrmarval 4.0K Nov  9  2023 RNAseq_uivc
+    drwxr-xr-x 5 jrmarval jrmarval 4.0K Nov 19 17:58 Transcriptomics_UIVC
+    -rw-r--r-- 1 jrmarval jrmarval  20K Aug 29 23:05 bitacora.md
+    drwxr-xr-x 4 jrmarval jrmarval 4.0K Sep 18 15:12 ciencia_computacional
+    drwxr-xr-x 2 jrmarval jrmarval 4.0K Feb 24 17:37 curso_bioinfo
+    drwxr-xr-x 2 jrmarval jrmarval 4.0K Jan 29 17:45 general
+    drwxr-xr-x 2 jrmarval jrmarval 4.0K Jan 23 22:31 linux_cbiol
+    drwxr-xr-x 4 jrmarval jrmarval 4.0K Nov  5 22:18 linux_ib
+    drwxr-xr-x 6 jrmarval jrmarval 4.0K Sep 24 22:00 rnaseq_ccg
+    drwxr-xr-x 4 jrmarval jrmarval 4.0K Feb 17 09:01 scRNAseq_marval
+    drwxr-xr-x 7 jrmarval jrmarval 4.0K Nov 21 13:46 test_rnaseq
 
 Como vemos nuestro directorio **curso_bioinfo** fue creado. Ahora para movernos entre directorios usamos el comando *cd*. Veremos que el prompt muestra el nombre del directorio actual de trabajo.
 
+    > (base) jrmarval@LAPTOP-8SI0DC1R:~/marval$
+---
+
     cd curso_bioinfo
 ---
-    > [jrmarval@LAPTOP-8SI0DC1R:~/marval/curso_bioinfo$]
+    > (base) jrmarval@LAPTOP-8SI0DC1R:~/marval/curso_bioinfo$
 
 Si queremos regresar al directorio anterior ejecutamos:
 
     cd ..
 ---
-    > [Directorio anterior de trabajo]
+    > (base) jrmarval@LAPTOP-8SI0DC1R:~/marval$
 
 Si quisieramos movernos a una ruta en especial podemos indicar la ruta destino en un solo comando:
 
     cd /rutadestino
 
-¿Qué pasa cuándo se ejecuta?
+**¿Qué pasa cuándo se ejecuta?**
 
     cd -
 ---
     cd --
+
+---
 
 Ahora que estamos dentro de nuestro directorio de trabajo sería bueno crear un archivo. Para ello usaremos un editor de texto plano, algo así como un Word-Office pero versión sencilla para la terminal. Existen varias herramientas, pero nosotros usaremos *nano*. Vamos a generar dos archivos para seguir con los ejercicios.  
 
