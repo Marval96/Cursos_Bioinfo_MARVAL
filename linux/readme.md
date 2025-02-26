@@ -360,13 +360,96 @@ Ahora si vamos a cambiar el propietario y grupo de un archivo.
 
 Para ello ejecuta:
 
+    sudo chown bioinfo_user:bio_grupo saludo.txt
+---
     ls -lh
 ---
     > -rwxrwxrwx 1 bioinfo_user bio_grupo   21 Feb 25 10:48 saludo.txt
 
+Finalmente vamos a trabajar un poco la edición de archivos en Linux. Para ello usaremos como ejemplo el archivo salmon.tsv el cual contiene infromación sobre los transcritos de una muestra RNAseq procesada con el mapeador [Salmon](https://combine-lab.github.io/salmon/).
+
++ Primero vean el archivo ¿Qué comando podrían usar para consultar el contenido del archivo?
+
+El comando *awk* es útil para manejar columnas. Por ejemplo, si queremos extraer alguna columna en específico:
+
+    awk '{print $1}' salmon.tsv
+
+De tal fomra que puedo extraer las columnas de mi interés y guardarlas en otor archivo:
+
+     awk '{print $1, $4}' salmon.tsv > test_awk.tsv
 ---
 
-#### **Script**
+Con awk también es posible hacer filtrar los datos. Por ejemplo, conservar solo los transcritos obervados:
+
+    awk '$4 > 0' salmon.tsv > expresados.tsv
+
+Ahora vamos a buscaar patrones de texto, lo cual se puede hacer con el comando *grep*:
+
+    grep "ENST00000456328" salmon.tsv
+---
+    grep -v "0.000000" salmon.tsv
+
+Aquí la opción "-v" invierte la búsqueda, es decir, en lugar de conservar las líneas con el patrón de interés, las elimina. 
+
+Ejercicio: determina cuántos transcritos tienen un nivel de expresión mayor a 0 TPM en el archivo Salmon.
+Tip: busca el comando *wc*.
+
+    grep -vc "0.000000" salmon.tsv
+
+También podemos ordenar los archivos por algún tipo de orden, ya sea númerico o alfabético con el comando *sort*:
+
+    sort -k4,4nr salmon.tsv | column -t | head -n 20
+---
+    sort -k5,5n salmon.tsv | column -t | head -n 20
+---
+    sort -k1,1 salmon.tsv | column -t | head -n 20
+---
+    sort -k1,1r salmon.tsv | column -t | head -n 20
+
+Lo elementos repetidos son un dolor de cabeza en cualquier lenguaje de programación. En Linux podemos emplear *uniq* para remover elementos repetidos. En este caso no usaremos el archivo salmon.tsv dado que no tiene elementos repetidos. Pero podemos crear un archivo más ilutrativo para este comando:
+
+    echo -e "manzana\nbanana\nmanzana\npera\nbanana\nnaranja\nmanzana" > frutas.txt
+---
+    cat frutas.txt
+---
+    > manzana
+    banana
+    manzana
+    pera
+    banana
+    naranja
+    manzana
+---
+    sort frutas.txt | uniq -c
+---
+    > 2 banana
+      3 manzana
+      1 naranja
+      1 pera
+---
+     sort frutas.txt | uniq
+---
+    > banana
+      manzana
+      naranja
+      pera
+
+Si queremos encontrar un archivo cuya ubicación desconocemos podemos usar el comando *find*:
+
+    find / -name "salmon.tsv" 2>/dev/null
+---
+    > /home/jrmarval/marval/curso_bioinfo/salmon.tsv
+      /home/jrmarval/marval/Cursos_Bioinfo_MARVAL/linux/salmon.tsv
+
+**Hasta este punto hemos visto algunos de los comandos básicos del shell de Linux que te ayudarán a manejarte fácilmente en la terminal y gestionar archivos.**
+
+*Si tienen alguna duda o comentario...hablen ahora o callen para siempre.*
+
+![Are you sure?](rm_meme.jpeg)
+
+---
+
+### **Bash Script**
 
 Como habrás notado puedes hacer tareas directamente en la terminal pero cuando tengas una tarea mayor y repetitiva frente a ti no es tan buena idea introducir el comando *n* cantidad de veces, esperando a que termine un proceso para ingresar el siguiente comando. Podemos hacer que la computadora trabaje para nosotros al unificar la secuencia de comandos y ejecutarlos al mismo tiempo. Así podríamos irnos a casa mientras la computadora trabaja.   
 
