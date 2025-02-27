@@ -211,6 +211,13 @@ Integridad de archivos:
     > db4b928255357ccf79ced93668e18480  mi_primer_script.sh
 ---
 
+También es importante saber descargar datos desde la terminal. Como ejemplo usaremos un set de datos de cáncer de ma disponibles en [cBioPortal](https://www.cbioportal.org/study/summary?id=breast_msk_2018). Después de la descarga es necesario descomprimir los datos.
+
+    wget https://cbioportal-datahub.s3.amazonaws.com/breast_msk_2018.tar.gz
+---
+    tar -xvzf breast_msk_2018.tar.gz
+---
+
 **Nota:** A menudo, debido a la premura del trabajo, optamos por ejecutar manualmente la misma línea de código una y otra vez en lugar de automatizarla. En el momento puede parecer la mejor opción, pero a largo plazo no lo es. Cuando nos pidan repetir el análisis, nos veremos obligados a volver a ejecutar todas esas líneas una por una. Por eso, **es más eficiente invertir una tarde en construir un script que nos permita repetir el mismo análisis cuantas veces sea necesario con un solo comando, ahorrando tiempo y reduciendo errores.**
 
 ![The Emperor](bash.png)
