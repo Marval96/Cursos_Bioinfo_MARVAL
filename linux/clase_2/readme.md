@@ -211,7 +211,7 @@ Integridad de archivos:
     > db4b928255357ccf79ced93668e18480  mi_primer_script.sh
 ---
 
-También es importante saber descargar datos desde la terminal. Como ejemplo usaremos un set de datos de cáncer de ma disponibles en [cBioPortal](https://www.cbioportal.org/study/summary?id=breast_msk_2018). Después de la descarga es necesario descomprimir los datos.
+También es importante saber descargar datos desde la terminal. Como ejemplo usaremos un set de datos de cáncer de mama disponibles en [cBioPortal](https://www.cbioportal.org/study/summary?id=breast_msk_2018). Después de la descarga es necesario descomprimir los datos.
 
     wget https://cbioportal-datahub.s3.amazonaws.com/breast_msk_2018.tar.gz
 ---
