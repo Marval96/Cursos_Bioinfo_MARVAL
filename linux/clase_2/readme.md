@@ -1,6 +1,6 @@
 # **Bash Script**
 
-Como habrás notado puedes hacer tareas directamente en la terminal pero cuando tengas una tarea mayor y repetitiva frente a ti no es tan buena idea introducir el comando *n* cantidad de veces, esperando a que termine un proceso para ingresar el siguiente comando. Podemos hacer que la computadora trabaje para nosotros al unificar la secuencia de comandos y ejecutarlos al mismo tiempo. Así podríamos irnos a casa mientras la computadora trabaja.   
+Como habrás notado puedes hacer tareas directamente en la terminal pero cuando tengas una tarea mayor y repetitiva frente a ti no es tan buena idea introducir el comando *n* cantidad de veces, esperando a que finalice un proceso para ingresar el siguiente comando. Podemos hacer que la computadora trabaje para nosotros al unificar la secuencia de comandos y ejecutarlos al mismo tiempo. Así podríamos irnos a casa mientras la computadora trabaja.   
 
 Automatizar un proceso es posible gracias a los **scripts**, un archivo ejecutable por un lenguaje de programación como R, Python o Bash. En el caso de Linux el empleado por el SO es Bash, si quieres saber que interprete de Shell (comandos por terminal) tiene tu equipo simplemente ejecuta:
 
@@ -73,6 +73,14 @@ Ahora, modifica los permisos necesarios para que solo tú (propietario) puedas e
     ./mi_primer_script.sh tu_nombre
 ---
     > Hola, tu_nombre
+
+Otra forma de intorducir una variable en neustros scripts de Linux es con la función *read*. Ejecuta el siguiente script y observa las diferencias en su ejecucción con el script anterior.
+
+    #!/bin/bash
+    echo "Introduce tu nombre:"
+    read nombre
+    echo "Hola, $nombre"
+
 
 Ahora si quieres saber cuánto tiempo tardó en ejecutarse tu script puedes correr:
 
@@ -176,6 +184,36 @@ Otro tipo de ciclo importante es el *while*, el cual ejecuta una función mientr
 
 **Nota:** la computadora no piensa, solo hace cosas y a veces esas cosas no siempre son las que queremos. 
 
+# **Poder computacional**
+
+Dentro de nuestro trabajo como bionformáticos, es necesario conocer las características del equipo computacional que estámos utilizando.
+
+Distribución Linux:
+
+    lsb_release -a
+
+Información del procesador:
+
+    lscpu
+
+Infomración de discos:
+
+    lsblk
+---
+    df -h
+---
+    du -h
+
+Integridad de archivos:
+
+    md5sum mi_primer_script.sh
+---
+    > db4b928255357ccf79ced93668e18480  mi_primer_script.sh
+---
+
+**Nota:** A menudo, debido a la premura del trabajo, optamos por ejecutar manualmente la misma línea de código una y otra vez en lugar de automatizarla. En el momento puede parecer la mejor opción, pero a largo plazo no lo es. Cuando nos pidan repetir el análisis, nos veremos obligados a volver a ejecutar todas esas líneas una por una. Por eso, **es más eficiente invertir una tarde en construir un script que nos permita repetir el mismo análisis cuantas veces sea necesario con un solo comando, ahorrando tiempo y reduciendo errores.**
+
+![The Emperor](bash.png)
 
 
 
