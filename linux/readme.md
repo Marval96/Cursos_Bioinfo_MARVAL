@@ -1,6 +1,4 @@
-# **Terminal Linux**
-
-### **Introducción**
+# **Introducción a Linux**
 
 Hola, Mundo.
 
