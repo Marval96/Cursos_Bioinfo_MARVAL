@@ -1,7 +1,9 @@
 # Reporte de Análisis de Calidad NGS  
 
 **Autor:** Fulan@ de tal
+
 **Fecha:** *muy muy lejano* a tal de tal
+
 **Herramientas usadas:** *FastQC y MultiQC*
 
 ---
