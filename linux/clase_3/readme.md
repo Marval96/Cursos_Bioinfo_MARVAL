@@ -22,8 +22,10 @@ Ahora si podemos realizar la instalación de Conda:
 3. Cuando términe verás que se descargo un archico con extensión *.sh*. Deberás ejecutarlo:
 
         sh fileconda.sh
-    
-    Confirma lo que te sea requerido. Al finaliza cierra tu terminal y abrela de nuevo (esto es para reiniciar el Shell).
+
+Confirma lo que te sea requerido. Al finaliza cierra tu terminal y abrela de nuevo (esto es para reiniciar el Shell). Puedes usar el comando:
+
+        reset
 
 [Vídeo de apoyo](https://youtu.be/P6eGTN9QN2Q?si=UtVllFqq7E03tt9B)
 
@@ -51,7 +53,7 @@ Para este punto ya tenemos instalado Conda ¿Notas algo distinto? Ahora vamos a 
 
 ### **Ejercicio:**
 + Instala FastQC y MultiQC en un ambiente conda.
-+ Descargar las dos primeras muestras de esta liga: https://github.com/hartwigmedical/testdata/tree/master/100k_reads_hiseq/TESTX
++ Descargar todas las muestras de esta liga: https://github.com/hartwigmedical/testdata/tree/master/100k_reads_hiseq/TESTX
 
 + ¿Para qué son estás herramientas y cómo las utilizamos?
 
@@ -89,7 +91,9 @@ Ahora vamos a generar un reporte usando el lenguaje Markdown. Para conocer la  s
 **Ahora estás listo para iniciar tu próximo análisis bioinformático de una manera más organizada.**
 
 ![*May the force be with you!*](bioinformatics.jpg)
+---
 
+## **Ensamblaje transcriptómico**
 
 
 
