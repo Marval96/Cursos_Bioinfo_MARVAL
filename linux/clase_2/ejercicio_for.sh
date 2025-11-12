@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir new_name
+mkdir -p  new_name
 
 # Nombre de la imagen original
 imagen=$1

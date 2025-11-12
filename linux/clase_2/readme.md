@@ -191,14 +191,32 @@ Dentro de nuestro trabajo como bionformáticos, es necesario conocer las caracte
 Distribución Linux:
 
     lsb_release -a
+---
+
+Comando para usuarios Mac:
+
+    sw_vers
+---
+    uname -a
 
 Información del procesador:
 
     lscpu
+---
+    sysctl -a | grep machdep.cpu
+---
+    system_profiler SPHardwareDataType
+
 
 Infomración de discos:
 
     lsblk
+---
+
+Para usuarios Mac: 
+
+    diskutil list
+
 ---
     df -h
 ---
@@ -215,6 +233,11 @@ También es importante saber descargar datos desde la terminal. Como ejemplo usa
 
     wget https://cbioportal-datahub.s3.amazonaws.com/breast_msk_2018.tar.gz
 ---
+
+Para usuarios Mac:
+
+    curl -O https://cbioportal-datahub.s3.amazonaws.com/breast_msk_2018.tar.gz
+---   
     tar -xvzf breast_msk_2018.tar.gz
 ---
 
