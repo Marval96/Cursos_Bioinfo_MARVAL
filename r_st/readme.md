@@ -338,3 +338,5 @@ Finalmente, aprenderemos a como ordenar datos:
 ### **Ejercicio de R**
 
 Realiza una selección para que únicamente te queden las columnas de los genes, los valores de log2FC, padj. Determina los valores estadisticos básicos y posicionalos de acuerdo al valor de padj.
+
+#### **Agradecimiento a la Dra. Mayra Cecilia Suárez Arriga (Cciliana) por el diseño de este material.**
