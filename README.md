@@ -1,15 +1,14 @@
-# **Introducción a la Bioinformática: Linux para Ciencias Biológicas**
+# **Introducción a la Bioinformática**
 
 **¡ Bienvenidos :) !**
 
-En este repositorio encontrarán el material de apoyo para las sesiones. Durante este curso trabajaremos con el sistema operativo Linux, en específico con la distribución Ubuntu mediante el programa [*Windows Subsystem Linux (WSL)*](https://learn.microsoft.com/es-es/windows/wsl/about). 
+En este repositorio encontrarán el material de apoyo para empezar en el campo de la bionformática. Este espacio parte desde linux como un pilarimportante para iniciar en el análisis de datos ómicos, aquí trabajaremos con el sistema operativo Linux, en específico con la distribución Ubuntu. Si tu computadora tiene Windows, no te preocupes puedes usar Linux mediante el programa [*Windows Subsystem Linux (WSL)*](https://learn.microsoft.com/es-es/windows/wsl/about). 
 
-**¡Por favor, es muy importante que tengan instalado el programa para el primer día del curso! El tiempo es corto así que tratemos de aprovecharlo.**
-**También, les pido que contesten el siguiente [formulario](https://forms.gle/ufytsbYJrMf8M1nY6), por favor.**
+**¡Por favor, es muy importante que tengan instalado el programa para aprovechar estos recursos!**
 
 ### **Instalación de WSL (*Windows Subsystem for Linux*):**
 
-No pretendo que se vuelvan expertos en Linux hoy, pero si me gustaría que se lleven una noción de como desenvolverse en un entorno con este sistema operativo. Para ello haremos uso de la terminal Linux con una distribución Ubuntu. Si trabajas con un equipo Apple (Mac), no te precupes, en esencia es lo mismo.  Lo más seguro es que tengas Windows y si es el 10 u 11 ¡Vamos de ganando! Solo deberás instalar *WLS (Windows Subsystem for Linux)* para poder ejecutar el Kernel de Linux en tu equipo Windows **(bendito sea el Sr)**. 
+No pretendo que se vuelvan expertos en Linux hoy, pero si me gustaría que se lleven una noción de como desenvolverse en un entorno con este sistema operativo. Para ello haremos uso de la terminal Linux con una distribución Ubuntu. Si trabajas con un equipo Apple (Mac), no te precupes, en esencia es lo mismo.  Lo más seguro es que tengas Windows, así que solo deberás instalar *WLS (Windows Subsystem for Linux)* para poder ejecutar el Kernel de Linux en tu equipo Windows **(bendito sea el Sr)**. 
 
 Para realizar la instalación de WSL pueden apoyarse de los siguientes recursos:
 
@@ -17,28 +16,28 @@ Para realizar la instalación de WSL pueden apoyarse de los siguientes recursos:
 + https://learn.microsoft.com/es-es/windows/wsl/install
 
 
-La distribución Linux que deben descargar prefrentemente es Ubuntu 24.04.1 LTS. El proceso es el mismo que se indica en el vídeo. Por favor, configuren su usuario para que puedan usar la terminal. **La contraseña que pongan será vital para el desarrollo del curson y del uso del sitema operativo, así que no la olviden por favor.**
+La distribución Linux que deben descargar prefrentemente debe ser la versión *LTS* más actual de Ubuntu 24.04.1 LTS. El proceso es el mismo que se indica en el vídeo. Por favor, configuren su usuario para que puedan usar la terminal. **La contraseña que pongan será vital para la gestión del sistema operativo, así que no la olviden por favor.**
 
-No duden en escribirme si tienen alguna duda o problema de instalación. Es importante que tengan instalados los programas para el día de la clase, por favor.
+No duden en escribirme si tienen alguna duda o problema de instalación. 
 
 ---
 
 ### **Contacto:**
 
-Biol. Exp. [Jhonatan Raúl Martínez Valderrama](cv_J_Raul_Mtz_Valderrama.pdf); jhonatanraulm@gmail.com ;
+Biol. Exp. [Jhonatan Raúl Martínez Valderrama](cv_RaulValderrama.pdf); jhonatanraulm@gmail.com ;
 
 + Posgrado en Ciencias Biológicas, Universidad Nacional Autónoma de México. 
 + Unidad de Investigación en Virología y Cáncer, Hospital Infantil de México, Federico Gómez. 
 + [Grupo de Ciencia Computacional del Hospital Infantil de México, Federico Gómez](https://github.com/Ciencia-Computacional-HIMFG).
++ Laboratorio de Falla Medular y Carcinogénesis, Instituto de Investigaciones Biomédicas, UNAM-INP.
 
-![May the Force be with you](linux.jpg)
+![May the Force be with you](bioinfo.jpg)
 
 ---
 
 ### **Para seguir aprendiendo**
 
-Chicos, aquí le dejo una serie de recursos 
-que les pueden resultar útiles para seguir en este proceso de aprendizaje (muchos de ellos son gratuitos).
+Aquí le dejo una serie de recursos que les pueden resultar útiles para seguir en este proceso de aprendizaje (muchos de ellos son gratuitos).
 
 + EMBL's European Bioinformatics Institute: https://www.ebi.ac.uk/
 
