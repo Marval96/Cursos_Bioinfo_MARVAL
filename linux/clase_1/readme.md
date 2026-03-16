@@ -316,6 +316,26 @@ Para ello ejecuta:
 ---
     > -rwxrwxrwx 1 bioinfo_user bio_grupo   21 Feb 25 10:48 saludo.txt
 
+Los usuarios de mac0S deberán ejecutar los siguientes comandos:
+
+    # Crear grupo
+    sudo dseditgroup -o create bio_grupo
+    # Ver info del grupo
+    dscacheutil -q group -a name bio_grupo
+    # o
+    dscl . -read /Groups/bio_grupo
+    # Crear usuario (interactivo para contraseña) y crear su home automáticamente
+    sudo sysadminctl -addUser bioinfo_user -fullName "Bio Info" -password "<Aqui_pon_la_contraseña_del_nuevo_usuario>"
+    # Añadir usuario al grupo
+    sudo dseditgroup -o edit -a bioinfo_user -t user bio_grupo
+    # Ver info del usuario y del grupo
+    id bioinfo_user
+    dscl . -read /Users/bioinfo_user
+    dscacheutil -q group -a name bio_grupo
+    # Cambiar propietario y grupo de un archivo (igual que en Linux)
+    sudo chown bioinfo_user:bio_grupo saludo.txt
+    ls -l saludo.txt
+
 Finalmente vamos a trabajar un poco la edición de archivos en Linux. Para ello usaremos como ejemplo el archivo salmon.tsv el cual contiene infromación sobre los transcritos de una muestra RNAseq procesada con el mapeador [Salmon](https://combine-lab.github.io/salmon/).
 
 + Primero vean el archivo ¿Qué comando podrían usar para consultar el contenido del archivo?

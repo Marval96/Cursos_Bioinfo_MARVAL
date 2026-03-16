@@ -156,6 +156,126 @@ chmod 777 qc.sh
 
 ---
 
+### 8. Manejo de archivos 
+En esta práctica trabajarás con el archivo `salmon.tsv`, que contiene información sobre la cuantificación de transcritos obtenida con **Salmon**, una herramienta común en análisis de RNA-seq.
+
+El objetivo es practicar comandos de Linux para:
+
+- explorar archivos
+- filtrar información
+- manipular columnas
+- contar elementos
+- ordenar resultados
+- automatizar tareas simples
+
+Durante esta tarea usarás herramientas comunes en bioinformática como:
+
+```
+awk
+grep
+sort
+wc
+uniq
+```
+
+Primero inspecciona el archivo `salmon.tsv`.
+
++ Visualiza el contenido del archivo.
++ Muestra únicamente las primeras 10 líneas.
++ Muestra únicamente las últimas 10 líneas.
+
+### Preguntas
+
++ ¿Cuántas columnas y cuántas filas tiene el archivo?
++ ¿Qué tipo de información parece contener cada columna?
+
+---
+
+Extracción de columnas con `awk`
+
+El comando `awk` permite trabajar fácilmente con columnas.
+
++ Extrae únicamente la **primera columna** del archivo.
++ Extrae la **primera y cuarta columna**.
++ Guarda el resultado en un archivo llamado:
+
+```
+transcritos_tpm.tsv
+```
+
+### Pregunta
+
+¿Qué información crees que representa la columna 4?
+¿Qué otra columna sería interesante extraer para un análisis de RNA-seq? Genera un archivo con las columnas de tu interés.
+
+---
+
+Filtrado de datos
+
+Ahora vamos a identificar los transcritos que realmente presentan expresión.
+
++ Filtra los transcritos cuya **expresión sea mayor a 0**.
++ Guarda el resultado en un archivo llamado:
+
+```
+expresados.tsv
+```
+
+### Pregunta
+
+¿Por qué en análisis de RNA-seq suele ser útil eliminar transcritos con expresión igual a 0?
+
+---
+
+Búsqueda de patrones con `grep`
+
++ Busca el transcrito:
+
+```
+ENST00000456328
+```
+
++ Filtra las líneas que **no contienen valores de expresión iguales a 0.000000**.
++ Cuenta cuántos transcritos tienen **expresión distinta de 0**.
+
+---
+
+Ordenamiento de datos
+
+Ordena el archivo `salmon.tsv` de diferentes formas:
+
++ Ordena el archivo **por la columna de TPM en orden descendente**.
++ Muestra únicamente los **20 transcritos con mayor expresión**.
++ Ordena el archivo **alfabéticamente por el identificador del transcrito**.
+
+### Pregunta
+
++ ¿Por qué podría ser útil ordenar los transcritos por TPM en un análisis de RNA-seq?
++  Verifica si este archivo contiene transcritos duplicados.
+
+## **Nota:**
+Repite el ejercico de manipulación de datos usando el archivo basal_1.sf
+---
+
+### Automatización con Bash
+
+Crea un script llamado:
+
+```
+analisis_salmon.sh
+```
+
+El script debe:
+
++ Imprimir un saludo al usuario por terminal. 
++ Mostrar la fecha de inicio.
++ Mostrar cuántos transcritos tienen expresión mayor a 0.
++ Mostrar los **10 transcritos más expresados**.
++ Mostrar la fecha de finalización. 
++ Almacena las salidas de tu script en un archivo llamado 'reporte_script.txt'. Es importante saber el tiempo que toma en ejecutarse tu script.  
+
+---
+
 ## **Nota**
 
 + Esta es una **tarea moral**. No es obligatoria, así que si decides no hacerla no pasa nada… aunque luego algunas cosas en clase puedan parecer misteriosamente complicadas, cada quien gestiona su propio destino académico.
