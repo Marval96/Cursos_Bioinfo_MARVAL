@@ -413,6 +413,46 @@ Si queremos encontrar un archivo cuya ubicación desconocemos podemos usar el co
 
 **Hasta este punto hemos visto algunos de los comandos básicos del shell de Linux que te ayudarán a manejarte fácilmente en la terminal y gestionar archivos.**
 
+Para facilitar el uso de comandos, podemos trabajar con atajos de comando, un *alias*, los cuales permiten creaar nombres cortos o personalizados  sobre comandos largos, complejos y/o repetitivos. 
+
+    alias ll='ls -lh'
+
++ Ahora cuando escribas ll estarás ejecutando el equivalente a 'ls -lh'
++ Sin embargo, esto es temporal. Solo funcionará en esa terminal. Si cierras la terminal se perderá el *alias*.
+
+Para que el *alias* se permanente, se debe editar el archivo ~/.bashrc o ~/.zshrc.
+
+    nano ~/.bashrc
+
+Dentro del archivo agregas tus *alias*:
+
+    alias gs='git status'
+    alias ll='ls -lah'
+
+Para aplcicar los cambios ejecuta:
+
+    source ~/.bashrc
+---
+    source ~/.zshrc
+
+ALgunos *alias* útiles son:
+
+    alias ..='cd ..'
+    alias ...='cd ../..'
+    alias cls='clear'
+    alias update='sudo apt update && sudo apt upgrade'
+
+Para ver los *alias* existentes ejecuta:
+
+    alias
+
+Para eliminat un *alias* el comando es:
+
+    unalias nombre_alias
+
+Nota: los *alias* son una vatiable, contiene una comando. Entonces, los alias se pueden sobreescribir. 
+
 *Si tienen alguna duda o comentario...hablen ahora o callen para siempre.*
 
 ![Are you sure?](rm_meme.jpeg)
+
