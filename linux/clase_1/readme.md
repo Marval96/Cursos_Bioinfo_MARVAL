@@ -450,7 +450,7 @@ Para eliminat un *alias* el comando es:
 
     unalias nombre_alias
 
-Nota: los *alias* son una vatiable, contiene una comando. Entonces, los alias se pueden sobreescribir. 
+Nota: los *alias* son una variable, contiene un comando. Entonces, los *alias* se pueden sobreescribir. 
 
 *Si tienen alguna duda o comentario...hablen ahora o callen para siempre.*
 
