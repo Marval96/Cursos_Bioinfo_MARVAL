@@ -281,3 +281,162 @@ El script debe:
 + Esta es una **tarea moral**. No es obligatoria, así que si decides no hacerla no pasa nada… aunque luego algunas cosas en clase puedan parecer misteriosamente complicadas, cada quien gestiona su propio destino académico.
 
 + Si algo se te complica, recuerda que Google, foros de apoyo, la IA e incluso hasta la documentación de los programas :S son herramientas válidas para resolver problemas. Saber usarlas también es parte del oficio bioinformático.
+
+### **Ejercicios de Bash: Ciclos / bucles / *loops***
+
+Ejemplos de uso para ciclos: `for`, `if`, `while`.
+
+Estos ejercicios están diseñados para reforzar el uso de estructuras de control en Bash con ejemplos aplicados a contextos reales (como bioinformática / RNA-seq).
+
+---
+
+**Ciclo `for`**
+
+Se usa cuando **sabemos cuántos elementos hay** (listas, archivos, rangos). Observa los siguentes ejemplos, analizalos y trata de correrlos en tu computadora. 
+
++ Ejercicio 1: Procesar archivos FASTQ
+---
+    #!/bin/bash
+    for file in *.fastq; do
+        echo "Procesando archivo: $file"
+    done
+
++ Ejercicio 2: Crear carpetas de meustras
+---
+    #!/bin/bash
+        for i in {1..5}; do
+        mkdir muestra_$i
+    done
+
++ Ejercico 3: remonmbrar archivos
+---
+    #!/bin/bash
+    for file in *.txt; do
+        mv "$file" "RNA_${file}"
+    done
+
+**Ciclo `if`**
+
+Se usa para tomar **desiciones**.
+
++ Ejercicio 4: verifica si un archivo existe
+---
+    #!/bin/bash
+    if [ -f "$1" ]; then
+        echo "El archivo existe"
+    else
+        echo "El archivo NO existe"
+    fi
+ 
++ Ejercio 5: filtrar archivos vacíos.
+---
+    #!/bin/bash
+    for file in *.fastq; do
+        if [ -s "$file" ]; then
+            echo "$file tiene contenido"
+        else
+            echo "$file está vacío"
+        fi
+    done
+
++ Ejercicio 6: clasificar muestras:
+
+    #!/bin/bash
+    reads=$1
+
+    if [ $reads -gt 1000000 ]; then
+        echo "Alta cobertura"
+    else
+        echo "Baja cobertura"
+    fi
+
+**Ciclo `while`**
+
+Se usa cuando no sabermos cuantas veces vamos a repetir una tera. Minetras la condición declarada se verdad este ciclo funcionará.
+
++ Ejercio 7: esperar por un archivo
+---
+    #!/bin/bash
+    while [ ! -f "resultado.txt" ]; do
+        echo "Esperando archivo..."
+        sleep 2
+    done
+    echo "Archivo encontrado"
+
++ Ejercicio 8: contador
+---
+    #!/bin/bash
+    contador=1
+
+    while [ $contador -le $1 ]; do
+        echo "Iteración $contador"
+        ((contador++))
+    done
+---
+
+**Caso práctico:**
+
++ Ejercicio: Clasificación de abundancia génica (TPM)
+    + Objetivo: clasificar genes como:
+        - **Altamente expresados**
+        - **Bajamente expresados** 
+        
+        usando el promedio (media) de TPM como referencia.
+
+Crea el archivo de entrada: `tpm_genes.txt`
+
+    GeneA 50
+    GeneB 10
+    GeneC 200
+    GeneD 5
+    GeneE 80
+    GeneF 300
+    GeneG 25
+    GeneH 60
+
+Aquí debemos establcer los puntos de corte para la clasificación que nos interesa con **base en la media de los TPM2**. Clasifica cada gen:
+
+    TPM > media → ALTO
+    TPM <= media → BAJO
+
+Genera un archivo de salida llamado clasificacion_tpm.txt con formato:
+
+| Gen   | TPM | Clasificación |
+|-------|-----|--------------|
+| GeneA | 50  | BAJO         |
+| GeneB | 10  | BAJO         |
+| GeneC | 200 | ALTO         |
+
+Revisa el siguiente código y trata de ejercutarlo:
+
+    #!/bin/bash
+
+    archivo="tpm_genes.txt"
+
+    # Calcular suma y conteo
+    suma=0
+    conteo=0
+
+    while read gen tpm; do
+        suma=$(echo "$suma + $tpm" | bc)
+        ((conteo++))
+    done < $archivo
+
+    # Calcular media
+    media=$(echo "scale=2; $suma / $conteo" | bc)
+
+    echo "Media TPM: $media"
+
+    # Clasificación
+    while read gen tpm; do
+        comparacion=$(echo "$tpm > $media" | bc)
+        
+        if [ $comparacion -eq 1 ]; then
+            estado="ALTO"
+        else
+            estado="BAJO"
+        fi
+
+        echo "$gen $tpm $estado" >> clasificacion_tpm.txt
+
+    done < $archivo
