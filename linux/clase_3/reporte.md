@@ -6,10 +6,12 @@
 
 **Herramientas usadas:** *FastQC y MultiQC*
 
+**Objetivo:** determinar la calidad de secuención de neustras muestras, obtenidas por *NGS* en formato *fastq*.
+
 ---
 
 ## Introducción  
-Este reporte documenta el análisis de calidad de las secuencias FASTQ utilizando **FastQC** y **MultiQC**. 
+Este reporte documenta el análisis de calidad de las secuencias FASTQ utilizando **FastQC** versión 'xy'  y **MultiQC** versión 'xy'.
 Se evaluaron los parámetros clave como la calidad por base, contenido de GC y presencia de adaptadores.
 
 ## Comandos utilizados  
@@ -30,4 +32,4 @@ El reporte de calidad MultiQC se pude consultar ejecutando:
 
     firefox fastqc_results/multiqc_report.html
 
-**Notas:** aquí pueden añadir una descripción del proceso, reportar algunos aspectos claves o técnicos sobre en análisis a fin de hacer su trabajo más reproducible y consistente.
+**Nota:** aquí pueden añadir una descripción del proceso, reportar algunos aspectos claves o técnicos sobre en análisis a fin de hacer su trabajo más reproducible y consistente.
