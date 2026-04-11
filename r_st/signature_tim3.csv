@@ -1,0 +1,68 @@
+﻿Gene,Functional module,Main function,Relationship to TIM-3 / exhaustion,Dominant cells
+HAVCR2,TIM-3 core,Inhibitory immune checkpoint receptor,Central node of functional immune exhaustion,"CD4, CD8, NK, myeloid"
+LGALS9,TIM-3 core,Galectin-9,Canonical ligand; induces T cell dysfunction/apoptosis,"Tumor, myeloid, stroma"
+CEACAM1,TIM-3 core,Adhesion/checkpoint molecule,TIM-3 coreceptor; reinforces inhibitory signaling,"T cells, tumor"
+HMGB1,TIM-3 core,Nuclear DAMP,Binding to TIM-3 inhibits antigen presentation,"Tumor, DCs"
+BAG6,TIM-3 core,Intracellular regulator,Keeps TIM-3 inactive; loss enables inhibitory signaling,T cells
+CADM1,TIM-3 core,Immune adhesion molecule,TIM-3 ligand/partner; regulates cytotoxicity,"NK cells, T cells"
+HAVCR1,TIM-3 core,Immunoregulatory receptor,TIM-1/TIM-3 crosstalk in T cells and DCs,"T cells, DCs"
+FYN,TIM-3 signaling,Src family kinase,Transduces inhibitory signaling downstream of TIM-3,"CD4, CD8"
+LCK,TCR/checkpoint signaling,Proximal TCR kinase,Balances TCR activation vs TIM-3 inhibition,"CD4, CD8"
+PTPN11,Checkpoint signaling,Inhibitory phosphatase,Cooperates with PD-1/TIM-3 in deep exhaustion,"CD4, CD8"
+PDCD1,Associated checkpoint,PD-1 receptor,Co-expression with TIM-3 defines deep exhaustion,"CD4, CD8"
+CD274,Associated checkpoint,PD-L1,Immunosuppressive synergy with TIM-3,"Tumor, myeloid"
+CTLA4,Associated checkpoint,Early checkpoint receptor,Reinforces TIM-3–dependent CD4 suppression,CD4
+TIGIT,Associated checkpoint,Inhibitory receptor,Signature of dysfunctional TIM-3? T cells,"CD4, CD8"
+LAG3,Associated checkpoint,Inhibitory receptor,Functional redundancy with TIM-3,"CD4, CD8"
+BTLA,Associated checkpoint,Inhibitory receptor,Marker of dysfunctional TIM-3? CD4 T cells,CD4
+CD28,Costimulation,T cell costimulation,Antagonizes TIM-3–mediated exhaustion,"CD4, CD8"
+ICOS,Costimulation,CD4 activation,Increased after TIM-3 blockade; functional helper T cells,CD4
+TNFRSF9,Costimulation,T cell survival/activation,Restores effector function after TIM-3 blockade,"CD4, CD8"
+CD40,APC–T costimulation,APC activation,Enhances responses upon TIM-3 axis relief,APCs
+CD80,Costimulation / checkpoint,CD28/CTLA-4 ligand,Defines activation–inhibition balance with TIM-3,APCs
+CD86,Costimulation / checkpoint,Early CD28 ligand,Cooperates with TIM-3 to promote exhaustion in TME,APCs
+TOX,Terminal exhaustion,Master exhaustion TF,TIM-3? PD-1? TOX? defines irreversible exhaustion,"CD4, CD8"
+NR4A1,Early exhaustion,Activation-induced TF,Programs TIM-3–associated dysfunction,"CD4, CD8"
+NR4A2,Early exhaustion,Transcriptional regulator,Cooperates with TOX in exhaustion,"CD4, CD8"
+NR4A3,Early exhaustion,Tolerance-associated TF,Signature of chronic stimulation with TIM-3,"CD4, CD8"
+EOMES,CD8 exhaustion,Effector/exhausted TF,Advanced TIM-3? CD8 exhaustion,CD8
+TCF7,Progenitor T cells,Stem-like T cell maintenance,Downregulated in terminal TIM-3? cells,"CD4, CD8"
+TBX21,Th1 polarization,Th1 master TF,Increased after TIM-3 blockade; proinflammatory,CD4
+CXCR3,Th1 migration,Chemotaxis receptor,Functional CD4 signature post–TIM-3 blockade,CD4
+IFNG,Effector cytokine,IFN-?,Reduced in exhaustion; restored after TIM-3 blockade,"T cells, NK"
+IL2,Effector cytokine,T cell proliferation,Marker of functional CD4 T cells,CD4
+TNF,Effector cytokine,Antitumor inflammation,Recovered after TIM-3 blockade,"T cells, NK"
+IL10,Immunosuppression,Regulatory cytokine,Induces and maintains TIM-3 expression,"Tregs, myeloid"
+TGFB1,Immunosuppression,TGF-?,Reinforces TIM-3–dependent exhaustion,"Tumor, stroma"
+IL6,Chronic inflammation,Pleiotropic cytokine,Promotes TIM-3? immunosuppressive TME,Tumor
+FOXP3,Treg,Master Treg TF,TIM-3 enhances Treg suppressive function,Tregs
+IKZF2,Stable Treg,Treg identity,Highly suppressive TIM-3? Tregs,Tregs
+MRC1,M2 macrophages,Alternative polarization,TIM-3 expression in suppressive TAMs,Macrophages
+CD163,M2 macrophages,Scavenger receptor,Signature of TIM-3? suppressive TAMs,Macrophages
+ARG1,Metabolic suppression,Arginine depletion,T cell inhibition with TIM-3,Myeloid
+CLEC7A,Innate immunity,Myeloid PRR,Chronic inflammation promotes TIM-3,Myeloid
+HIF1A,Hypoxia,Oxygen sensor,Hypoxia induces TIM-3 expression,Tumor
+LDHA,Tumor metabolism,Glycolysis,Acidic TME drives TIM-3–associated dysfunction,Tumor
+SLC2A1,T cell metabolism,Glucose uptake,Metabolic competition promotes exhaustion,T cells
+ENTPD1,Adenosine pathway,ATP ? AMP,Adenosine–TIM-3 immunosuppressive synergy,Tregs
+NT5E,Adenosine pathway,AMP ? adenosine,Deep immunosuppression with TIM-3,Tumor
+ANXA1,Apoptosis / PtdSer,Phosphatidylserine binding,Proxy of TIM-3/PtdSer signaling,Tumor
+ANXA5,Apoptosis / PtdSer,Phosphatidylserine binding,Facilitates TIM-3–PtdSer interaction,Tumor
+XKR8,Apoptosis / PtdSer,PtdSer scramblase,Exposes TIM-3 ligand during apoptosis,Tumor
+PTDSS1,PtdSer synthesis,Phosphatidylserine synthesis,Increased TIM-3 ligand availability in FA stress,Tumor
+PTDSS2,PtdSer synthesis,Phosphatidylserine synthesis,Reinforces TIM-3/PtdSer axis,Tumor
+BAX,Apoptosis,Pro-apoptotic factor,DNA damage ? PtdSer exposure,Tumor
+CASP3,Apoptosis,Executioner caspase,Indirect source of PtdSer,Tumor
+BCL2,Apoptosis,Anti-apoptotic factor,Death–survival balance,Tumor
+FANCA,Fanconi anemia,DNA repair,Genomic stress ? TIM-3–driven TME,Tumor
+FANCC,Fanconi anemia,Genomic stability,FA context favors immunosuppression,Tumor
+FANCD2,Fanconi anemia,ICL repair,FA–inflammation–TIM-3 hub,Tumor
+ATM,DNA damage response,DDR sensor kinase,Chronic inflammation ? TIM-3,Tumor
+ATR,DNA damage response,Replication stress sensor,Cooperates with ATM in FA,Tumor
+TP53,DNA damage response,Tumor suppressor,Apoptosis ? PtdSer–TIM-3 axis,Tumor
+STING1,Innate immunity,Cytosolic DNA sensor,DNA damage ? inflammation ? TIM-3,"Tumor, myeloid"
+CD4,Cell identity,Helper T cell marker,Central TIM-3–associated population,CD4
+CD8A,Cell identity,Cytotoxic T cell marker,Effector cells downstream of TIM-3,CD8
+NKG7,Effector function,Cytotoxic machinery,Activation after TIM-3 relief,"CD8, NK"
+PRF1,Effector function,Perforin,Restored cytotoxicity,"CD8, NK"
+GZMB,Effector function,Granzyme B,Effective antitumor cytotoxicity,"CD8, NK"

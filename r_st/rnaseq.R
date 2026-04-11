@@ -1,5 +1,4 @@
 #...............................................................................
-
 #  ---- Datos generales ----
 # Análisis transcriptómico
 # Script para realizar un analisis transcrpt+omico: PCA, DEA. PEA
@@ -76,6 +75,9 @@ dds <- DESeqDataSetFromMatrix(
 # ---- Filtrado de genes ----
 
 # Filtrado de genes con múltiples condiciones
+# Se remueven para no afectar la normalizacion y potencia estadística 
+# Si un gen no tiene suficiente señal para pasar un filtro básico,
+# tampoco tiene suficiente señal para ser un DEG confiable.
 
 # Definir criterios de expresión mínima
 min_counts <- 10
@@ -166,12 +168,12 @@ mat_data <- data.matrix(samp2[,1:ncol(samp2)])
 colnames(mat_data)
 
 # Clasificar las condiciones basadas en los nombres de las columnas
-Tipo_celular <- ifelse(grepl("^WT_", colnames(mat_data)), "Control", 
+cell_type <- ifelse(grepl("^WT_", colnames(mat_data)), "Control", 
                        ifelse(grepl("^IrrKO_", colnames(mat_data)), "Experimental", NA))
 
 # Crear el DataFrame de anotaciones de columnas
 my_sample_col <- data.frame(
-  Condition = factor(Tipo_celular, levels = c("Control", "Experimental")))
+  Condition = factor(cell_type, levels = c("Control", "Experimental")))
 
 row.names(my_sample_col) <- colnames(mat_data)
 
@@ -190,11 +192,12 @@ map <- pheatmap(mat_data,
                 show_rownames = F,
                 show_colnames = F,
                 cluster_rows = T,
-                treeheight_row = 0,
+                treeheight_row = 20,
                 #cluster_cols = F,
                 border_color = "grey",
                 scale = "row", 
-                cellwidth = 20,
+                cellwidth =20,
+                #cellheight = 10,
                 legend = T,
                 annotation_legend = T,
                 treeheight_col = 40,
@@ -219,7 +222,9 @@ res_df <- as.data.frame(res)
 
 # Añadir nombre de los genes
 res_df$symbol <- mapIds(org.Hs.eg.db, keys = rownames(res_df), 
-                        keytype = "ENSEMBL", column = "SYMBOL")
+                        #keytype = "ENSEMBL",
+                        keytype = "SYMBOL",
+                        column = "SYMBOL")
 
 # Remover valores NA
 res_df <- na.omit(res_df)
@@ -365,18 +370,18 @@ data <- data[order(-data$log2FoldChange), ]
 head(data)
 
 # Up genes
-upregulated_genes <- data[data$log2FoldChange >= 1 & data$padj < 0.05, ]
+data <- data[data$log2FoldChange >= 1 & data$padj < 0.05, ]
 
 
 # Verificar nombres de columna
-head(upregulated_genes)
-colnames(upregulated_genes)
+head(data)
+colnames(data)
 
 
 #---- ID ENSEMBLE --------------------------------------------------------------
 
 # Convertir los nombres de genes a Entrez IDs
-genes_entrez <- bitr(upregulated_genes$X,
+genes_entrez <- bitr(data$X,
                      fromType = "SYMBOL",
                      toType = "ENTREZID",
                      OrgDb = org.Hs.eg.db)
@@ -439,15 +444,188 @@ map_plot
 
 # Visualizar red de términos enriquecidos y genes asociados
 # categorySize puede ser "pvalue" o "geneNum"
-genes <- upregulated_genes$log2fc
-names(genes) <- upregulated_genes$symbol
+genes <- data$log2fc
+names(genes) <- data$symbol
 genes <- na.omit(genes)
+
 
 net <- cnetplot(pea_ora,
                 categorySize = "pvalue", 
                 foldChange = genes) + scale_color_gradient(low = "blue", high = "red")
 
 net
+
+data$entrez <- mapIds(org.Hs.eg.db,
+                      keys = data$symbol,
+                      keytype = "SYMBOL",
+                      column = "ENTREZID",
+                      multiVals = "first")
+
+genes <- data$log2FoldChange
+names(genes) <- data$entrez
+genes <- na.omit(genes)
+
+net <- cnetplot(pea_ora,
+                categorySize = "pvalue",
+                foldChange = genes) +
+  scale_color_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0)
+
+net
+
+# ---- TIM3 heatmap ----
+# TIM3 interactome visualization in mouse RNAseq data
+
+# Llamado de librerias
+#install.packages("pheatmap")
+library(pheatmap)
+#install.packages("ggplot2")
+library(ggplot2)
+#install.packages("colorspace")
+library(colorspace)
+#install.packages("grid")
+library(grid)
+#install.packages("RColorBrewer")
+library(RColorBrewer)
+#install.packages("viridis") 
+library(viridis)
+library(paletteer)
+#install.packages("colorBlindness")
+library(colorBlindness)
+
+# Establecer directorio de trabajo
+setwd("./")
+getwd()
+list.files()
+
+# Cargar datos
+data <- read.table(file = "genes_in_mouse_RNAseq_mouse.csv", 
+                   sep = ",", head=T)
+colnames(data)
+
+# No tiene caso representar un gen cuyo valor de expresión es 0 en todas las condciones
+# Eliminar filas con 0 en todas las columnas de condición experimental
+
+data <- data[!(rowSums(data[, -1]) == 0), ]
+
+# Reestructurando datos
+# Transformar dataframe a una matriz
+rownames(data) <- data[,1]
+samp2 <- data[,-1]
+mat_data <- data.matrix(samp2[,1:ncol(samp2)])
+
+# Es necesario normalizar?
+# Sin log
+hist(mat_data, main="Datos crudos (TPM)", breaks=50)
+# Con log
+hist(log2(mat_data + 1), main="Log2-transformados", breaks=50)
+
+# Normalización
+mat_data <- log2(mat_data + 1)  # +1 para evitar log(0)
+
+
+# Clasificar las condiciones basadas en los nombres de las columnas
+Tipo_celular <- ifelse(grepl("^Mouse_WT", colnames(mat_data)), "Fanca +/+", 
+                       ifelse(grepl("^Mouse_FA", colnames(mat_data)), "Fanca -/-", NA))
+
+#engrafment <- ifelse(grepl("^Mouse_.*_E1_", colnames(mat_data)), "E1", 
+#                     ifelse(grepl("^Mouse_.*_E2_", colnames(mat_data)), "E2", NA))
+
+Engraftment <- ifelse(grepl("^Mouse_.*_PE", colnames(mat_data)), "Pre",
+                      ifelse(grepl("^Mouse_.*_E1_", colnames(mat_data)), "E1", 
+                             ifelse(grepl("^Mouse_.*_E2_", colnames(mat_data)), "E2",
+                                    ifelse(grepl("^Mouse_.*_E6_", colnames(mat_data)), "E6",
+                                           ifelse(grepl("^Mouse_.*_E11_", colnames(mat_data)), "E11", NA)))))
+
+
+# Crear el DataFrame de anotaciones de columnas
+my_sample_col <- data.frame(
+  Engraftment = factor(Engraftment, levels = c("Pre", "E1", "E2", "E6", "E11")),
+  Condition = factor(Tipo_celular, levels = c("Fanca +/+", "Fanca -/-"))
+  
+)
+
+row.names(my_sample_col) <- colnames(mat_data)
+
+
+# Definir los colores para las anotaciones
+#my_colour <- list(
+#  Condition = c("Fanca +/+" = "#1A85FF", "Fanca -/-" = "#D41159"),
+#   engrafment= c("E1" = "#66C2A5", "E2" = "#FC8D62"))
+
+
+
+# Definir los colores para las anotaciones
+my_colour <- list(
+  Condition = c("Fanca +/+" = "#1A85FF", "Fanca -/-" = "#D41159"),
+  Engrafment = c("Pre" = "#E64B35", 
+                 "E1" = "#4DBBD5", 
+                 "E2" = "#00A087", 
+                 "E6" = "#3C5488", 
+                 "E11" = "#F39B7F"))
+
+
+
+# Ver paletas disponibles para daltónicos
+#display.brewer.all(colorblindFriendly = TRUE)
+# Usar la paleta "Dark2" (buena para daltónicos)
+#my_colour <- list(
+#  Condition = setNames(brewer.pal(3, "Dark2")[1:2], c("Fanca +/+", "Fanca -/-")),
+#  Engraftment = setNames(brewer.pal(8, "Dark2")[1:5], c("Pre", "E1", "E2", "E6", "E11"))
+#)
+
+# Crear el heatmap
+map <- pheatmap(mat_data,
+                #color= colorRampPalette(c("blue", "black", "red"))(100),
+                #color = viridis(8, option = "viridis"),# viridis magma infierno plasma cividis mako rocket turbo
+                #color = paletteer_c("ggthemes::Classic Red-Blue", 100),
+                color = colorRampPalette(rev(brewer.pal(n = 10, name = "RdYlBu")))(500),
+                fontsize_col = 8,
+                fontsize_row = 8,
+                show_rownames = T,
+                show_colnames = F,
+                cluster_rows = T,
+                treeheight_row = 80,
+                cluster_cols = F,
+                #cluster_cols = col_clust,
+                #cluster_cols = as.hclust(col_dend_sorted),
+                border_color = "gray",
+                scale = "row",
+                #scale = "column",
+                cellwidth = 15,
+                cellheight = 10,
+                legend = T,
+                annotation_legend = T,
+                treeheight_col = 40,
+                annotation_col = my_sample_col,
+                annotation_colors = my_colour,
+                annotation_names_col = T
+)
+map
+
+# Guardar el grafico 
+path = "./"
+png(filename = paste (path, "heatmap_tim3_signature_mouse_log_V3.png", sep = ""),
+    #res = 900, height = 5, width = 11, units = "in")
+    res = 900, height = 9, width = 11, units = "in")
+map
+dev.off()
+
+# Como SGV
+svg("heatmap_tim3_signature_mouse_log_V3.svg", width = 11, height = 9)
+map
+dev.off()
+
+# Dendograma
+dist_mat <- dist(t(mat_data))  # Distancia entre muestras
+hc <- hclust(dist_mat, method = "ward.D2")
+plot(hc)
+
+# Guardar el grafico 
+#path = "./"
+#png(filename = paste (path, "heatmap_MONOCYTE.png", sep = ""),
+#    res = 300, height = 18, width = 13, units = "in")
+#heatmap
+#dev.off()
 
 #---- Referencias: -------------------------------------------------------------
 
